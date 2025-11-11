@@ -1,0 +1,47 @@
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3">Products</h1>
+    <div>
+      <%= link_to 'New Product', new_product_path, class: 'btn btn-success me-2' %>
+      <%= form_with url: sync_from_sheet_products_path, method: :post, local: true, class: 'd-inline' do |f| %>
+        <div class="input-group">
+          <%= f.text_field :sheet_id, placeholder: 'Spreadsheet ID', class: 'form-control form-control-sm', style: 'max-width:420px;' %>
+          <%= f.submit 'Sync from Google Sheet', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <table class="table table-hover align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th class="text-end">Price</th>
+            <th class="text-end">Stock</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @products.each do |product| %>
+            <tr>
+              <td><%= product.id %></td>
+              <td><%= product.name %></td>
+              <td><%= product.category %></td>
+              <td class="text-end"><%= number_to_currency(product.price || 0, unit: "₺") %></td>
+              <td class="text-end"><%= product.stock %></td>
+              <td class="text-end">
+                <%= link_to 'Show', product_path(product), class: 'btn btn-sm btn-outline-secondary' %>
+                <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-sm btn-outline-primary' %>
+                <%= link_to 'Delete', product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
