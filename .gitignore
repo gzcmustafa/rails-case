@@ -33,6 +33,9 @@
 # Ignore key files for decrypting credentials and more.
 /config/*.key
 
+# Ignore service account JSON files (Google API credentials)
+/config/service_account.json
+
 
 /app/assets/builds/*
 !/app/assets/builds/.keep

@@ -1,12 +1,28 @@
 <% content_for :title, "Editing product" %>
 
-<h1>Editing product</h1>
-
-<%= render "form", product: @product %>
-
-<br>
-
-<div>
-  <%= link_to "Show this product", @product %> |
-  <%= link_to "Back to products", products_path %>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-sm">
+        <div class="card-header bg-warning text-dark">
+          <h4 class="mb-0">
+            <i class="bi bi-pencil-square me-2"></i>Edit Product
+          </h4>
+        </div>
+        <div class="card-body">
+          <%= render "form", product: @product %>
+        </div>
+        <div class="card-footer bg-light">
+          <div class="d-flex justify-content-between">
+            <%= link_to products_path, class: 'btn btn-outline-secondary' do %>
+              <i class="bi bi-arrow-left me-1"></i> Back to Products
+            <% end %>
+            <%= link_to product_path(@product), class: 'btn btn-outline-info' do %>
+              <i class="bi bi-eye me-1"></i> View Product
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
