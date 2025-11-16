@@ -23,7 +23,7 @@ class ProductSyncService
     price_idx    = header.index('price') #1 yani B sütunu
     stock_idx    = header.index('stock') #2 yani C sütunu
     category_idx = header.index('category') #3 yani D sütunu
-    # Hata mesajlarını yazacağımız sütun: "errors" (veya "error" yazdıysan onu da destekleyelim)
+    # Hata mesajlarını yazacağımız sütun.
     errors_idx   = header.index('errors') || header.index('error') #4 yani E sütunu
 
     # Sheet'teki tüm external_id'leri tutacak (silme işlemi için)
