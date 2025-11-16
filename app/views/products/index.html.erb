@@ -21,10 +21,7 @@
     </div>
     <div class="card-body">
       <div class="mb-3">
-        <%= form_with url: sync_from_sheet_products_path, method: :post, local: true, class: 'd-flex gap-2' do |f| %>
-          <%= f.text_field :sheet_id, placeholder: 'Spreadsheet ID', class: 'form-control', style: 'max-width:300px;' %>
-          <%= f.submit 'Sync from Google Sheet', class: 'btn btn-primary' %>
-        <% end %>
+        <%= button_to 'Sync from Google Sheet', sync_from_sheet_products_path, method: :post, class: 'btn btn-primary' %>
       </div>
 
       <% if @products.any? %>
@@ -57,11 +54,11 @@
                     <% end %>
                   </td>
                   <td class="text-end">
-                    <strong class="text-success"><%= number_to_currency(product.price || 0, unit: "₺") %></strong>
+                    <strong class="text-danger"><%= number_to_currency(product.price || 0, unit: "₺") %></strong>
                   </td>
                   <td class="text-center">
                     <% if product.stock.present? %>
-                      <span class="badge <%= product.stock > 0 ? 'bg-success' : 'bg-warning' %>">
+                      <span class="badge <%= product.stock > 0 ? 'bg-warning' : 'bg-warning' %>">
                         <%= product.stock %>
                       </span>
                     <% else %>

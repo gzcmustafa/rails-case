@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :sync_from_sheet
   before_action :set_product, only: %i[show edit update destroy]
 
   # Ürünleri listeleme
@@ -44,10 +45,23 @@ class ProductsController < ApplicationController
 
   # Google Sheet'ten veri çekme (tek yönlü senkronizasyon)
   def sync_from_sheet
-    spreadsheet_id =  ENV['PRODUCTS_SHEET_ID'] #TODO iki seçenek
-    service = ProductSyncService.new(spreadsheet_id: spreadsheet_id)
+    google_sheet_id = ENV['GOOGLE_SHEET_ID']
+    
+    if google_sheet_id.blank?
+      flash[:alert] = 'GOOGLE_SHEET_ID is not defined. Please check your environment variables.'
+      redirect_to products_path
+      return
+    end
+    
+    service = ProductSyncService.new(google_sheet_id: google_sheet_id)
     result = service.call
-
+    
+    if result[:errors].empty?
+      flash[:notice] = 'Products Synced Successfully'
+    else
+      flash[:alert] = "Sync completed with #{result[:errors].count} errors."
+    end
+    
     redirect_to products_path
   end
 
