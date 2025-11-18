@@ -1,0 +1,61 @@
+<%= form_with(model: product, class: "needs-validation", novalidate: true) do |form| %>
+  <% if product.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <h5 class="alert-heading">
+        <i class="bi bi-exclamation-triangle me-2"></i>
+        <%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:
+      </h5>
+      <ul class="mb-0">
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label fw-bold" do %>
+      Product Name <span class="text-danger">*</span>
+    <% end %>
+    <%= form.text_field :name, class: "form-control form-control-lg", placeholder: "Enter product name", required: true %>
+    <div class="invalid-feedback">
+      Please provide a valid product name.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :category, class: "form-label fw-bold" do %>
+      Category
+    <% end %>
+    <%= form.text_field :category, class: "form-control form-control-lg", placeholder: "Enter category" %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <%= form.label :price, class: "form-label fw-bold" do %>
+        Price <span class="text-danger">*</span>
+      <% end %>
+      <div class="input-group input-group-lg">
+        <span class="input-group-text">₺</span>
+        <%= form.number_field :price, class: "form-control", placeholder: "0.00", step: "0.01", min: "0", required: true %>
+        <div class="invalid-feedback">
+          Please provide a valid price.
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <%= form.label :stock, class: "form-label fw-bold" do %>
+        Stock
+      <% end %>
+      <%= form.number_field :stock, class: "form-control form-control-lg", placeholder: "0", min: "0" %>
+    </div>
+  </div>
+
+  <div class="d-grid gap-2 mt-4">
+    <%= form.submit (product.new_record? ? "Create Product" : "Update Product"), 
+        class: "btn #{product.new_record? ? 'btn-success' : 'btn-warning'} btn-lg", 
+        data: { disable_with: "Saving..." } %>
+  </div>
+<% end %>
