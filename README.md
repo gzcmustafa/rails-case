@@ -43,8 +43,6 @@ git clone https://github.com/gzcmustafa/rails-case.git
 cd rails-case
 ```
 
-Replace `<repo-url>` with your own GitHub repository URL.
-
 ### 2. Dependencies 
 
 For backend dependencies:
