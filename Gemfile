@@ -66,6 +66,6 @@ group :test do
 end
 
 gem "dotenv-rails", "~> 3.1"
-gem "google-apis-sheets_v4", "~> 0.45.0"
+gem "google-apis-sheets_v4", "~> 0.46.0"
 gem "googleauth", "~> 1.15"
 gem "cssbundling-rails", "~> 1.4"
