@@ -101,11 +101,12 @@ UUID | Name | Price | Stock | Category | Error
 ```
 
 - Get the **ID** of the Sheet (the long ID in the URL).
-- **Share** the Sheet with the service account email address.
+- **Share** the Sheet with the service account email address (the client_email value from your service_account.json).
 
 ### 3. Environment Variable (GOOGLE_SHEET_ID)
 
 You can use a `.env` file in your local development environment.
+This variable should contain the Google Sheet ID you retrieved from the URL.
 
 ```env
 GOOGLE_SHEET_ID=your_sheet_id_here
