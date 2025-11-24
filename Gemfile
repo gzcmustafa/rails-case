@@ -67,5 +67,5 @@ end
 
 gem "dotenv-rails", "~> 3.1"
 gem "google-apis-sheets_v4", "~> 0.45.0"
-gem "googleauth", "~> 1.15"
+gem "googleauth", "~> 1.16"
 gem "cssbundling-rails", "~> 1.4"

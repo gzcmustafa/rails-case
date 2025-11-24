@@ -152,7 +152,7 @@ GEM
       base64 (~> 0.2)
       faraday (>= 1.0, < 3.a)
     google-logging-utils (0.2.0)
-    googleauth (1.15.1)
+    googleauth (1.16.0)
       faraday (>= 1.0, < 3.a)
       google-cloud-env (~> 2.2)
       google-logging-utils (~> 0.1)
@@ -209,8 +209,8 @@ GEM
     minitest (5.26.1)
     msgpack (1.8.0)
     multi_json (1.17.0)
-    net-http (0.7.0)
-      uri
+    net-http (0.8.0)
+      uri (>= 0.11.1)
     net-imap (0.5.12)
       date
       net-protocol
@@ -440,7 +440,7 @@ DEPENDENCIES
   debug
   dotenv-rails (~> 3.1)
   google-apis-sheets_v4 (~> 0.45.0)
-  googleauth (~> 1.15)
+  googleauth (~> 1.16)
   image_processing (~> 1.2)
   jbuilder
   jsbundling-rails
